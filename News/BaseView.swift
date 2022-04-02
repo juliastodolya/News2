@@ -1,11 +1,8 @@
 import UIKit
 
-protocol BaseView: class {
-}
+protocol BaseView: class {}
 
 extension BaseView {
-    
-    // MARK: - MY
     func showAlert(title: String? = nil, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel)
@@ -36,7 +33,5 @@ extension BaseView {
         (self as? UIViewController)?.present(alert, animated: true)
         // self.present(alert, animated: true, completion: nil)
     }
-    
-    // индикатор дописать
 }
 

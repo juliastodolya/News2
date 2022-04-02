@@ -1,10 +1,3 @@
-//
-//  CategoryCell.swift
-//  News
-//
-//  Created by Юлия on 02.04.2022.
-//
-
 import UIKit
 
 class CategoryCell: UITableViewCell {
