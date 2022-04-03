@@ -45,7 +45,7 @@ class NewsListPresenterImp: NewsListPresenter {
                 guard let self = self else { return }
                 self.view?.reloadTableView()
             })
-            .subscribe(onError: { [weak self] error in
+            .subscribe(onError: { error in
                 print(error)
             })
             .disposed(by: self.disposeBag)

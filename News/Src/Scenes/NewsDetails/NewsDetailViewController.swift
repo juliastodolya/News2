@@ -14,7 +14,23 @@ class NewsDetailsViewController: UIViewController, NewsDetailsView {
     
     func updateUI(with data: NewsDetailsInfo?) {
         self.newsTitle.text = data?.title ?? ""
-        self.time.text = data?.date ?? ""
-        self.fullDescription.text = data?.fullDescription ?? ""
+        
+        let fullDescriptionText = data?.fullDescription ?? ""
+        if fullDescriptionText.contains("<") && fullDescriptionText.contains(">") {
+            self.fullDescription.attributedText = fullDescriptionText.convertHtml()
+            self.fullDescription.sizeToFit()
+        } else {
+            self.fullDescription.text = fullDescriptionText
+        }
+        
+        if let dateCreate = data?.date {
+            guard let date =
+                    DateFormatter.utcFullISO8610Format.date(from: dateCreate) else {
+                self.time.text = ""
+                return
+            }
+            let formattedDate = DateFormatter.defaultFormatter.string(from: date)
+            self.time.text = formattedDate
+        }
     }
 }
