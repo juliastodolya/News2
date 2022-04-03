@@ -10,8 +10,7 @@ protocol NewsUseCase {
     
     func getNewsCategories() -> Single<NewsCategoryList>
     func getNewsList(for categoryId: Int) -> Completable
-
-    //    func getNewsDetail(for id: Int) -> Single<NewsCategories>
+    func getNewsDetails(for id: Int) -> Single<NewsDetailsEntity>
 }
 
 class NewsUseCaseImp: NewsUseCase {
@@ -61,5 +60,10 @@ class NewsUseCaseImp: NewsUseCase {
     
     private func cancelLoading() {
         requestsBag = DisposeBag()
+    }
+    
+    func getNewsDetails(for id: Int) -> Single<NewsDetailsEntity> {
+        return self.apiNewsGateway.getNewsDetails(for: id)
+            .observeOn(MainScheduler.instance)
     }
 }

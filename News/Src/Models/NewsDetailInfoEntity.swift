@@ -1,11 +1,11 @@
 import Foundation
 
-struct NewsDetailEntity: Codable {
+struct NewsDetailsEntity: Codable {
     let code: Int?
-    let news: NewsDetailInfo?
+    let news: NewsDetailsInfo?
 }
 
-struct  NewsDetailInfo: Codable {
+struct  NewsDetailsInfo: Codable {
     let id: Int?
     let title: String?
     let date: String?

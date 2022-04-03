@@ -19,11 +19,9 @@ class NewsCategoriesPresenterImp: NewsCategoriesPresenter {
     func getCategories() {
         self.newsUseCase.getNewsCategories()
             .observeOn(MainScheduler.instance)
-            .do(onSubscribe: { [weak view = self.view] in //view?.showActivityIndicator() },
-            },
-                onDispose: { [weak view = self.view] in //view?.hideActivityIndicator() })
-                    view?.reloadTableView()
-                })
+            .do( onDispose: { [weak view = self.view] in
+                view?.reloadTableView()
+            })
             .subscribe { [weak self] categories in
                 if let categories = categories.list {
                     self?.newsCategoryItems = categories

@@ -2,11 +2,12 @@ import UIKit
 
 class NewsListViewController: UIViewController, NewsListView {
     internal var presenter: NewsListPresenter!
-    @IBOutlet var newsListTableView: UITableView!
     var newsItems: [NewsShortInfo]? {
         self.presenter.newsItems
     }
-        
+    
+    @IBOutlet var newsListTableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
@@ -42,17 +43,12 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150.0
-    }
-    
-    func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let newsItemId = self.newsItems?[indexPath.row].id else {
+        guard let newsId = self.newsItems?[indexPath.row].id else {
             return
         }
-        self.presenter.openNewsDetail(for: newsItemId)
+        self.presenter.openNewsDetails(for: newsId)
     }
     
     func tableView(_ tableView: UITableView,

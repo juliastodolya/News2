@@ -11,7 +11,7 @@ class ApiNewsGateway: ApiBaseGateway, NewsGateway {
         self.apiClient.execute(request: ExtendedApiRequest.getNewsList(for: categoryId, page: page))
     }
     
-    func getNewsDetail(for id: Int) -> Single<NewsDetailInfo> {
-        self.apiClient.execute(request: ExtendedApiRequest.getNewsDetail(for: id))
+    func getNewsDetails(for id: Int) -> Single<NewsDetailsEntity> {
+        self.apiClient.execute(request: ExtendedApiRequest.getNewsDetails(for: id))
     }
 }

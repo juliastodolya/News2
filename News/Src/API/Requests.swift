@@ -16,7 +16,7 @@ extension ExtendedApiRequest {
                                query: ("page", String(page)))
     }
     
-    static func getNewsDetail(for id: Int) -> ExtendedApiRequest {
+    static func getNewsDetails(for id: Int) -> ExtendedApiRequest {
         return extendedRequest(path: "/v1/news/details",
                                method: .get,
                                headers: [Header.contentJson],

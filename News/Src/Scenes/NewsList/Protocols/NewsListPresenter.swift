@@ -5,7 +5,7 @@ protocol NewsListPresenter {
     var isLoadingInProcess: Bool { get }
     var categoryId: Int { get }
     
-    func openNewsDetail(for id: Int?)
+    func openNewsDetails(for id: Int)
     func getNews(for categoryId: Int)
     func viewDidLoad()
 }

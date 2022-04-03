@@ -1,6 +1,3 @@
-//
-//  NewsListCell.swift
-//  News
 import UIKit
 
 class NewsListCell: UITableViewCell {

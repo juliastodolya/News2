@@ -27,7 +27,6 @@ class NewsListPresenterImp: NewsListPresenter {
         self.getNews(for: self.categoryId)
     }
     
-    // MARK: - Subscribe on updates
     func subscribeOnNewsUpdates() {
         newsUseCase.source
             .observeOn(MainScheduler.instance)
@@ -38,7 +37,6 @@ class NewsListPresenterImp: NewsListPresenter {
             .disposed(by: self.disposeBag)
     }
     
-    // MARK: - Get new photo
     func getNews(for categoryId: Int) {
         guard self.newsUseCase.hasMorePage else { return }
         self.newsUseCase.getNewsList(for: categoryId)
@@ -48,14 +46,12 @@ class NewsListPresenterImp: NewsListPresenter {
                 self.view?.reloadTableView()
             })
             .subscribe(onError: { [weak self] error in
-                guard let self = self else { return }
-//                self.view?.setupInterfaceError()
+                print(error)
             })
             .disposed(by: self.disposeBag)
     }
         
-    
-    func openNewsDetail(for id: Int?) {
-        
+    func openNewsDetails(for id: Int) {
+        self.router.openNewsDetails(for: id)
     }
 }

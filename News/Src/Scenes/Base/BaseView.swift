@@ -8,7 +8,6 @@ extension BaseView {
         let okAction = UIAlertAction(title: "Ok", style: .cancel)
         alert.addAction(okAction)
         (self as? UIViewController)?.present(alert, animated: true)
-        // self.present(alert, animated: true)
     }
     
     func showAlert(title: String,
@@ -31,7 +30,6 @@ extension BaseView {
         })
         alert.addAction(allowAction)
         (self as? UIViewController)?.present(alert, animated: true)
-        // self.present(alert, animated: true, completion: nil)
     }
 }
 
