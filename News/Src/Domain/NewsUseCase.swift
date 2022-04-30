@@ -7,35 +7,33 @@ protocol NewsUseCase {
     var currentPage: Int { get }
     var totalItemsCount: Int? { get }
     var hasMorePage: Bool { get }
-    
+
     func getNewsCategories() -> Single<NewsCategoryList>
     func getNewsList(for categoryId: Int) -> Completable
     func getNewsDetails(for id: Int) -> Single<NewsDetailsEntity>
 }
 
 class NewsUseCaseImp: NewsUseCase {
-    
     private let apiNewsGateway: ApiNewsGateway
-    
+
     public var source = PublishSubject<[NewsShortInfo]>()
-    public var isLoadingInProcess: Bool = false
-    public var hasMorePage: Bool = true
+    public var isLoadingInProcess = false
+    public var hasMorePage = true
     public var currentPage = 1
     public var totalItemsCount: Int?
     private var items = [NewsShortInfo]()
-    
+
     private var requestsBag = DisposeBag()
-    
-    
+
     init(_ apiNewsGateway: ApiNewsGateway) {
         self.apiNewsGateway = apiNewsGateway
     }
-    
+
     func getNewsCategories() -> Single<NewsCategoryList> {
         return self.apiNewsGateway.getNewsCategories()
             .observeOn(MainScheduler.instance)
     }
-    
+
     func getNewsList(for categoryId: Int) -> Completable {
         return .deferred {
             self.cancelLoading()
@@ -57,11 +55,11 @@ class NewsUseCaseImp: NewsUseCase {
                 .asCompletable()
         }
     }
-    
+
     private func cancelLoading() {
         requestsBag = DisposeBag()
     }
-    
+
     func getNewsDetails(for id: Int) -> Single<NewsDetailsEntity> {
         return self.apiNewsGateway.getNewsDetails(for: id)
             .observeOn(MainScheduler.instance)

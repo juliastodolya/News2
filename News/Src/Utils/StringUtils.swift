@@ -9,7 +9,7 @@ extension String {
             let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
                 NSAttributedString.DocumentReadingOptionKey.documentType:
                     NSAttributedString.DocumentType.html,
-                
+
                 NSAttributedString.DocumentReadingOptionKey.characterEncoding:
                     NSNumber(value: String.Encoding.utf8.rawValue)
             ]

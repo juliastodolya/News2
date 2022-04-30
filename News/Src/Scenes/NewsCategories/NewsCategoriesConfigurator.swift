@@ -8,7 +8,7 @@ class NewsCategoriesConfigurator {
                                                    DI.resolve())
         view.presenter = presenter
     }
-    
+
     static func open() {
         guard let view = R.storyboard.newsCategories.category() else { return }
         NewsCategoriesConfigurator().configure(view: view)

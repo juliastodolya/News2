@@ -5,7 +5,7 @@ class NewsListViewController: UIViewController, NewsListView {
     var newsItems: [NewsShortInfo]? {
         self.presenter.newsItems
     }
-    
+
     @IBOutlet var newsListTableView: UITableView!
 
     override func viewDidLoad() {
@@ -13,13 +13,13 @@ class NewsListViewController: UIViewController, NewsListView {
         self.setupTableView()
         self.presenter.viewDidLoad()
     }
-    
+
     func setupTableView() {
         self.newsListTableView.delegate = self
         self.newsListTableView.dataSource = self
         self.newsListTableView.tableFooterView = UIView(frame: .zero)
     }
-    
+
     func reloadTableView() {
         self.newsListTableView.reloadData()
     }
@@ -30,18 +30,18 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
                    numberOfRowsInSection section: Int) -> Int {
         self.newsItems?.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.newsListTableView.dequeueReusableCell(
             withIdentifier: R.reuseIdentifier.listCell,
             for: indexPath)!
-        
+
         let info = self.newsItems?[indexPath.row]
         cell.setupCell(with: info)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -50,7 +50,7 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         self.presenter.openNewsDetails(for: newsId)
     }
-    
+
     func tableView(_ tableView: UITableView,
                    willDisplay cell: UITableViewCell,
                    forRowAt indexPath: IndexPath) {
@@ -60,4 +60,3 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-

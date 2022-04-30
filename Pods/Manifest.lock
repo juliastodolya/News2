@@ -1,0 +1,51 @@
+PODS:
+  - DITranquillity (4.2.0):
+    - SwiftLazy (>= 1.1.6)
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxNetworkApiClient (0.1.4):
+    - RxSwift
+    - SwiftyJSON
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - SwiftLazy (1.1.7)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - DITranquillity
+  - R.swift
+  - RxCocoa
+  - RxNetworkApiClient
+  - RxSwift (~> 5.0.1)
+
+SPEC REPOS:
+  trunk:
+    - DITranquillity
+    - R.swift
+    - R.swift.Library
+    - RxCocoa
+    - RxNetworkApiClient
+    - RxRelay
+    - RxSwift
+    - SwiftLazy
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  DITranquillity: 1f91f7a70553762095e001cf99bfe8f64c280ef0
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxNetworkApiClient: f45056395be3d62388b8344441331aad5ff60a68
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SwiftLazy: dcb1edc6c2b633ba2e68f28554d9dd6d1c0bfd13
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: ddb13a6625c7c447ecb728e5560f17d05998ca92
+
+COCOAPODS: 1.10.0

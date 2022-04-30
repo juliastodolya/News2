@@ -1,7 +1,6 @@
 import Foundation
 
 extension DateFormatter {
-
     static func formatter(dateFormat: String) -> DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = .current
@@ -18,7 +17,7 @@ extension DateFormatter {
 
         return formatter
     }
-    
+
     static var iso8601Format: DateFormatter {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -41,7 +40,7 @@ extension DateFormatter {
 
         return formatter
     }
-    
+
     static var utcFullISO8610Format: DateFormatter {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -49,7 +48,7 @@ extension DateFormatter {
 
         return formatter
     }
-    
+
     static var hourAndMinutesUtc: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = .current
@@ -76,31 +75,31 @@ extension DateFormatter {
 
         return formatter
     }
-    
+
     static var humanFormat: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = .current
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "dd MMMM YYYY"
-        
+
         return formatter
     }
-    
+
     static var shortHumanFormat: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = .current
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "dd MMM YYYY"
-        
+
         return formatter
     }
-    
+
     static var month: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = .current
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "MMMM"
-        
+
         return formatter
     }
 }

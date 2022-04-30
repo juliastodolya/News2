@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/Pods-News/Pods-News-frameworks.sh
+${BUILT_PRODUCTS_DIR}/DITranquillity/DITranquillity.framework
+${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework
+${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework
+${BUILT_PRODUCTS_DIR}/RxNetworkApiClient/RxNetworkApiClient.framework
+${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SwiftLazy/SwiftLazy.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

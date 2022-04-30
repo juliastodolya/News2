@@ -7,7 +7,7 @@ class NewsCategoriesPresenterImp: NewsCategoriesPresenter {
     private let newsUseCase: NewsUseCase
     private var disposeBag = DisposeBag()
     internal var newsCategoryItems: [NewsCategory]?
-    
+
     init(_ view: NewsCategoriesView,
          _ router: NewsCategoriesRouter,
          _ newsUseCase: NewsUseCase) {
@@ -15,7 +15,7 @@ class NewsCategoriesPresenterImp: NewsCategoriesPresenter {
         self.router = router
         self.newsUseCase = newsUseCase
     }
-    
+
     func getCategories() {
         self.newsUseCase.getNewsCategories()
             .observeOn(MainScheduler.instance)
@@ -31,7 +31,7 @@ class NewsCategoriesPresenterImp: NewsCategoriesPresenter {
             }
             .disposed(by: disposeBag)
     }
-    
+
     func openNewsList(for categoryId: Int) {
         self.router.openNewsList(for: categoryId)
     }

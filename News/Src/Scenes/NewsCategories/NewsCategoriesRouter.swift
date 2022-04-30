@@ -6,7 +6,7 @@ class NewsCategoriesRouter {
     init(_ view: NewsCategoriesViewController) {
         self.view = view
     }
-    
+
     func openNewsList(for categoryId: Int) {
         guard let navigationController = self.view.navigationController else {
             return

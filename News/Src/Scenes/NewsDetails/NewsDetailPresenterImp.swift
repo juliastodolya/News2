@@ -8,7 +8,7 @@ class NewsDetailsPresenterImp: NewsDetailsPresenter {
     private let newsUseCase: NewsUseCase
     private var disposeBag = DisposeBag()
     var newsItemDetailed: NewsDetailsInfo?
-    
+
     init(_ view: NewsDetailsView,
          _ router: NewsDetailsRouter,
          _ newsId: Int,
@@ -18,15 +18,15 @@ class NewsDetailsPresenterImp: NewsDetailsPresenter {
         self.newsId = newsId
         self.newsUseCase = newsUseCase
     }
-    
+
     func viewDidLoad() {
         self.getNewsDetails(for: self.newsId)
     }
-    
+
     func getNewsDetails(for newsId: Int) {
         self.newsUseCase.getNewsDetails(for: newsId)
             .observeOn(MainScheduler.instance)
-            .do(onDispose: { [weak view = self.view] in 
+            .do(onDispose: { [weak view = self.view] in
                 view?.updateUI(with: self.newsItemDetailed)
             })
             .subscribe { [weak self] newsItem in

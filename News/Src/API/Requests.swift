@@ -8,14 +8,14 @@ extension ExtendedApiRequest {
                                method: .get,
                                headers: [Header.contentJson])
     }
-    
+
     static func getNewsList(for categoryId: Int, page: Int) -> ExtendedApiRequest {
         return extendedRequest(path: "/v1/news/categories/\(categoryId)/news",
                                method: .get,
                                headers: [Header.contentJson],
                                query: ("page", String(page)))
     }
-    
+
     static func getNewsDetails(for id: Int) -> ExtendedApiRequest {
         return extendedRequest(path: "/v1/news/details",
                                method: .get,
@@ -23,6 +23,3 @@ extension ExtendedApiRequest {
                                query: ("id", String(id)))
     }
 }
-
-
-
