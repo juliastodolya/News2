@@ -103,7 +103,7 @@ playground.xcworkspace
 #
 
 # Generated files
-/BaseApp/R.generated.swift
+/News1/R.generated.swift
 *.xcworkspace
 *.xcodeproj
 
