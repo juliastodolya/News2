@@ -9,7 +9,7 @@
 final class FrameworksDependenciesContainer {
   private var imports = [FrameworkWrapper: Set<FrameworkWrapper>]()
   private var mutex = PThreadMutex(normal: ())
-
+  
   final func dependency(framework: DIFramework.Type, import importFramework: DIFramework.Type) {
     let frameworkWrapper = FrameworkWrapper(framework: framework)
     let importFrameworkWrapper = FrameworkWrapper(framework: importFramework)

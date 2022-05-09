@@ -2,7 +2,7 @@
 //  DIContainer+getGraph.swift
 //  DITranquillity
 //
-//  Created by Ивлев А.Е. on 30.06.2020.
+//  Created by Alexander Ivlev on 30.06.2020.
 //  Copyright © 2020 Alexander Ivlev. All rights reserved.
 //
 
@@ -114,7 +114,7 @@ extension DIContainer {
     }
 
     for injection in component.injections {
-      result.append(contentsOf: injection.signature.parameters.map { ($0, false, injection.cycle) })
+      result.append(contentsOf: injection.signature.parameters.map{ ($0, false, injection.cycle) })
     }
 
     return result

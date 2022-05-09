@@ -20,7 +20,7 @@
 ///   - tag: a tag
 ///   - obj: resolving object
 /// - Returns: resolved object
-public func by<Tag, T>(tag: Tag.Type, on obj: DIByTag<Tag, T>) -> T {
+public func by<Tag,T>(tag: Tag.Type, on obj: DIByTag<Tag,T>) -> T {
   return obj._object
 }
 
@@ -38,7 +38,7 @@ public func by<Tag, T>(tag: Tag.Type, on obj: DIByTag<Tag, T>) -> T {
 ///   - tag: a tag
 ///   - obj: resolving object
 /// - Returns: resolved object
-public func by<Tag1, Tag2, T>(tags: Tag1.Type, _ t: Tag2.Type, on obj: DIByTag<Tag1, DIByTag<Tag2, T>>) -> T {
+public func by<Tag1, Tag2, T>(tags: Tag1.Type, _ t: Tag2.Type, on obj: DIByTag<Tag1, DIByTag<Tag2,T>>) -> T {
   return obj._object._object
 }
 
@@ -56,12 +56,14 @@ public func by<Tag1, Tag2, T>(tags: Tag1.Type, _ t: Tag2.Type, on obj: DIByTag<T
 ///   - tag: a tag
 ///   - obj: resolving object
 /// - Returns: resolved object
-public func by<Tag1, Tag2, Tag3, T>(tags: Tag1.Type, _ t2: Tag2.Type, _ t3: Tag3.Type, on obj: DIByTag<Tag1, DIByTag<Tag2, DIByTag<Tag3, T>>>) -> T {
+public func by<Tag1, Tag2, Tag3, T>(tags: Tag1.Type, _ t2: Tag2.Type, _ t3: Tag3.Type, on obj: DIByTag<Tag1, DIByTag<Tag2, DIByTag<Tag3,T>>>) -> T {
   return obj._object._object._object
 }
 
+
 /// Special class for resolve object by type with tag. see method: `byTag`
 public final class DIByTag<Tag, T>: InternalByTag<Tag, T> {}
+
 
 /// Short syntax for get many objects
 /// Using:
@@ -100,6 +102,7 @@ public final class DIMany<T>: InternalByMany<T> {}
 
 /// Special class for resolve many object in framework. see method: `manyInFramework`
 public final class DIManyInFramework<T>: InternalByManyInFramework<T> {}
+
 
 /// Short syntax for get object use arguments
 /// Simple using:

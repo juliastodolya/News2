@@ -18,7 +18,7 @@
 /// Needs to specify a container to inject dependencies in view/window controllers.
 public final class DIStoryboard: _DIStoryboardBase {
   private override init() { super.init() }
-
+  
   /// Creates new instance of `DIStoryboard`.
   /// When initializing itself, it finds a container and other information about the storyboard.
   ///
@@ -32,10 +32,10 @@ public final class DIStoryboard: _DIStoryboardBase {
       if let component = scm.findComponent(by: name, bundle: bundle) {
         return container.resolver.resolve(type: DIStoryboard.self, component: component)
       }
-
+      
       return create(name: name, bundle: bundle, container: container)
     }
-
+    
     return DIStoryboard._create(name, bundle: bundle)
   }
 
@@ -68,7 +68,7 @@ public final class DIStoryboard: _DIStoryboardBase {
   }
 
   #if os(iOS) || os(tvOS)
-
+  
   /// Instantiates the view controller with the specified identifier.
   /// The view controller and its child controllers have their dependencies injected as specified in the container passed to the initializer of the self.
   ///
@@ -79,9 +79,9 @@ public final class DIStoryboard: _DIStoryboardBase {
     resolver?.inject(into: vc)
     return vc
   }
-
+  
   #elseif os(OSX)
-
+  
   /// Instantiates the view/window controler with the specified identifier.
   /// The view/window controller and tis child controllers hase their dependencies injected as specified in the container passed to the initializer of the self.
   ///
@@ -92,12 +92,12 @@ public final class DIStoryboard: _DIStoryboardBase {
     resolver?.inject(into: vc)
     return vc
   }
-
+  
   #endif
 
-  private var resolver: StoryboardResolver?
+  private var resolver: StoryboardResolver? = nil
 }
-
+ 
 // MARK: - Storyboard maker
 extension DIContainer {
   #if os(iOS) || os(tvOS)
@@ -120,7 +120,7 @@ extension DIContainer {
     StoryboardContainerMap.instance.append(name: name, bundle: bundle, component: builder.component, in: self)
     return builder
   }
-
+  
   #elseif os(OSX)
 
   /// Registers a new storyboard.
@@ -141,8 +141,8 @@ extension DIContainer {
     StoryboardContainerMap.instance.append(name: name, bundle: bundle, component: builder.component, in: self)
     return builder
   }
-
+  
   #endif
 }
-
+  
 #endif

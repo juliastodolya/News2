@@ -15,6 +15,7 @@ extension DIComponentBuilder {
     return self
   }
 
+
   /// Function for appending an injection method
   ///
   /// Using:
@@ -27,8 +28,8 @@ extension DIComponentBuilder {
   ///   - m: Injection method. First input argument is the always created object
   /// - Returns: Self
   @discardableResult
-  public func injection<P0, P1>(_ m: @escaping (Impl, P0, P1) -> Void) -> Self {
-    return append(injection: MM.make3([UseObject.self, P0.self, P1.self], by: m))
+  public func injection<P0,P1>(_ m: @escaping (Impl,P0,P1) -> ()) -> Self {
+    return append(injection: MM.make3([UseObject.self,P0.self,P1.self], by: m))
   }
 
   /// Function for appending an injection method
@@ -43,8 +44,8 @@ extension DIComponentBuilder {
   ///   - m: Injection method. First input argument is the always created object
   /// - Returns: Self
   @discardableResult
-  public func injection<P0, P1, P2>(_ m: @escaping (Impl, P0, P1, P2) -> Void) -> Self {
-    return append(injection: MM.make4([UseObject.self, P0.self, P1.self, P2.self], by: m))
+  public func injection<P0,P1,P2>(_ m: @escaping (Impl,P0,P1,P2) -> ()) -> Self {
+    return append(injection: MM.make4([UseObject.self,P0.self,P1.self,P2.self], by: m))
   }
 
   /// Function for appending an injection method
@@ -59,8 +60,8 @@ extension DIComponentBuilder {
   ///   - m: Injection method. First input argument is the always created object
   /// - Returns: Self
   @discardableResult
-  public func injection<P0, P1, P2, P3>(_ m: @escaping (Impl, P0, P1, P2, P3) -> Void) -> Self {
-    return append(injection: MM.make5([UseObject.self, P0.self, P1.self, P2.self, P3.self], by: m))
+  public func injection<P0,P1,P2,P3>(_ m: @escaping (Impl,P0,P1,P2,P3) -> ()) -> Self {
+    return append(injection: MM.make5([UseObject.self,P0.self,P1.self,P2.self,P3.self], by: m))
   }
 
   /// Function for appending an injection method
@@ -75,8 +76,8 @@ extension DIComponentBuilder {
   ///   - m: Injection method. First input argument is the always created object
   /// - Returns: Self
   @discardableResult
-  public func injection<P0, P1, P2, P3, P4>(_ m: @escaping (Impl, P0, P1, P2, P3, P4) -> Void) -> Self {
-    return append(injection: MM.make6([UseObject.self, P0.self, P1.self, P2.self, P3.self, P4.self], by: m))
+  public func injection<P0,P1,P2,P3,P4>(_ m: @escaping (Impl,P0,P1,P2,P3,P4) -> ()) -> Self {
+    return append(injection: MM.make6([UseObject.self,P0.self,P1.self,P2.self,P3.self,P4.self], by: m))
   }
 
   /// Function for appending an injection method
@@ -91,8 +92,8 @@ extension DIComponentBuilder {
   ///   - m: Injection method. First input argument is the always created object
   /// - Returns: Self
   @discardableResult
-  public func injection<P0, P1, P2, P3, P4, P5>(_ m: @escaping (Impl, P0, P1, P2, P3, P4, P5) -> Void) -> Self {
-    return append(injection: MM.make7([UseObject.self, P0.self, P1.self, P2.self, P3.self, P4.self, P5.self], by: m))
+  public func injection<P0,P1,P2,P3,P4,P5>(_ m: @escaping (Impl,P0,P1,P2,P3,P4,P5) -> ()) -> Self {
+    return append(injection: MM.make7([UseObject.self,P0.self,P1.self,P2.self,P3.self,P4.self,P5.self], by: m))
   }
 
   /// Function for appending an injection method
@@ -107,8 +108,8 @@ extension DIComponentBuilder {
   ///   - m: Injection method. First input argument is the always created object
   /// - Returns: Self
   @discardableResult
-  public func injection<P0, P1, P2, P3, P4, P5, P6>(_ m: @escaping (Impl, P0, P1, P2, P3, P4, P5, P6) -> Void) -> Self {
-    return append(injection: MM.make8([UseObject.self, P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self], by: m))
+  public func injection<P0,P1,P2,P3,P4,P5,P6>(_ m: @escaping (Impl,P0,P1,P2,P3,P4,P5,P6) -> ()) -> Self {
+    return append(injection: MM.make8([UseObject.self,P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self], by: m))
   }
 
   /// Function for appending an injection method
@@ -123,7 +124,7 @@ extension DIComponentBuilder {
   ///   - m: Injection method. First input argument is the always created object
   /// - Returns: Self
   @discardableResult
-  public func injection<P0, P1, P2, P3, P4, P5, P6, P7>(_ m: @escaping (Impl, P0, P1, P2, P3, P4, P5, P6, P7) -> Void) -> Self {
-    return append(injection: MM.make9([UseObject.self, P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self], by: m))
+  public func injection<P0,P1,P2,P3,P4,P5,P6,P7>(_ m: @escaping (Impl,P0,P1,P2,P3,P4,P5,P6,P7) -> ()) -> Self {
+    return append(injection: MM.make9([UseObject.self,P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self], by: m))
   }
 }

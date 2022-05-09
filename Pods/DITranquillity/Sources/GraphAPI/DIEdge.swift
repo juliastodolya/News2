@@ -2,7 +2,7 @@
 //  DIEdge.swift
 //  DITranquillity
 //
-//  Created by Ивлев А.Е. on 06.07.2020.
+//  Created by Alexander Ivlev on 06.07.2020.
 //  Copyright © 2020 Alexander Ivlev. All rights reserved.
 //
 
@@ -54,3 +54,4 @@ public final class DIEdge: Hashable {
     return lhs.id == rhs.id
   }
 }
+

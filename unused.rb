@@ -114,7 +114,9 @@ class Unused
        "fastlane/",
        "Tests.swift$",
        "Spec.swift$",
-       "Tests/"
+       "Tests/",
+       "Src/AppDelegate/SceneDelegate.swift$",
+       "R.generated.swift$"
      ]
    end 
 

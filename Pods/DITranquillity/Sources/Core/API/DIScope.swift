@@ -2,7 +2,7 @@
 //  DIScope.swift
 //  DITranquillity
 //
-//  Created by Ивлев Александр on 12/02/2019.
+//  Created by Alexander Ivlev on 12/02/2019.
 //  Copyright © 2019 Alexander Ivlev. All rights reserved.
 //
 
@@ -42,7 +42,7 @@ public class DIScope {
       return
     }
 
-    let weakStorage = DICacheStorage()
+    let weakStorage = DIUnsafeCacheStorage()
     for (key, value) in storage.any {
       weakStorage.save(object: WeakAny(value: value), by: key)
     }
@@ -52,7 +52,7 @@ public class DIScope {
   }
 
   internal func toStrongCopy() -> DIScope {
-    let strongStorage = DICacheStorage()
+    let strongStorage = DIUnsafeCacheStorage()
     for (key, value) in storage.any {
        if let weakRef = value as? WeakAny {
         if let value = weakRef.value {

@@ -2,8 +2,7 @@ excluded:
   - ${PWD}/Carthage
   - ${PWD}/Pods
   - ${PWD}/DerivedData
-  - "${PWD}/**/R.generated.swift"
-  - "${PWD}/**/UITests/R.generated.swift"
+  - "**/R.generated.swift"
 
 disabled_rules:
   - discarded_notification_center_observer

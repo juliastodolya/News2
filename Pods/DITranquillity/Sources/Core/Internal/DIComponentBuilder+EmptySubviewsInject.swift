@@ -6,6 +6,7 @@
 //  Copyright © 2019 Alexander Ivlev. All rights reserved.
 //
 
+
 extension DIComponentBuilder {
   internal func useInjectIntoSubviewComponent() { }
 }

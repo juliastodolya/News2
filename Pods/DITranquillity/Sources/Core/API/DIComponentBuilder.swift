@@ -10,7 +10,10 @@
 /// To create a used function `register(_:)` in class `ContainerBuilder`.
 /// The class allows you to configure all the necessary properties for the component.
 public final class DIComponentBuilder<Impl> {
+  private weak var extensions: DIExtensions?
+
   init(container: DIContainer, componentInfo: DIComponentInfo) {
+    self.extensions = container.extensions
     self.component = Component(componentInfo: componentInfo,
                                in: container.frameworkStack.last, container.partStack.last)
     self.componentContainer = container.componentContainer
@@ -21,7 +24,7 @@ public final class DIComponentBuilder<Impl> {
       useInjectIntoSubviewComponent()
     #endif
   }
-
+  
   deinit {
     log(.verbose, msgc: {
       var msg = "\(component.priority)"
@@ -33,8 +36,10 @@ public final class DIComponentBuilder<Impl> {
       msg += "\(DISetting.Log.tab)injections: \(component.injections.count)\n"
       return msg
     })
-  }
 
+    extensions?.componentRegistration?(DIComponentVertex(component: component))
+  }
+  
   let component: Component
   let componentContainer: ComponentContainer
   let resolver: Resolver
@@ -58,7 +63,7 @@ extension DIComponentBuilder {
     })
     return self
   }
-
+  
   /// Function allows you to specify a type with tag by which the component will be available.
   /// Using:
   /// ```
@@ -77,7 +82,7 @@ extension DIComponentBuilder {
     })
     return self
   }
-
+  
   /// Function allows you to specify a type with name by which the component will be available.
   /// But! you can get an object by name in only two ways: use container method `resolve(name:)` or use `injection(name:)`.
   /// Inside initialization method, you cann't specify name for get an object. Use tags if necessary.
@@ -98,7 +103,7 @@ extension DIComponentBuilder {
     })
     return self
   }
-
+  
   /// Function allows you to specify a type with tag by which the component will be available.
   /// Using:
   /// ```
@@ -112,10 +117,10 @@ extension DIComponentBuilder {
   ///   - validator: Validate type function. Always use `{$0}` for type validation.
   /// - Returns: Self
   @discardableResult
-  public func `as`<Parent>(check type: Parent.Type, _ validator: (Impl) -> Parent) -> Self {
+  public func `as`<Parent>(check type: Parent.Type, _ validator: (Impl)->Parent) -> Self {
     return self.as(type)
   }
-
+  
   /// Function allows you to specify a type with tag by which the component will be available.
   /// Using:
   /// ```
@@ -130,10 +135,10 @@ extension DIComponentBuilder {
   ///   - validator: Validate type function. Always use `{$0}` for type validation.
   /// - Returns: Self
   @discardableResult
-  public func `as`<Parent, Tag>(check type: Parent.Type, tag: Tag.Type, _ validator: (Impl) -> Parent) -> Self {
+  public func `as`<Parent, Tag>(check type: Parent.Type, tag: Tag.Type, _ validator: (Impl)->Parent) -> Self {
     return self.as(type, tag: tag)
   }
-
+  
   /// Function allows you to specify a type with name by which the component will be available.
   /// But! you can get an object by name in only two ways: use container method `resolve(name:)` or use `injection(name:)`.
   /// Inside initialization method, you cann't specify name for get an object. Use tags if necessary.
@@ -150,10 +155,11 @@ extension DIComponentBuilder {
   ///   - validator: Validate type function. Always use `{$0}` for type validation.
   /// - Returns: Self
   @discardableResult
-  public func `as`<Parent>(check type: Parent.Type, name: String, _ validator: (Impl) -> Parent) -> Self {
+  public func `as`<Parent>(check type: Parent.Type, name: String, _ validator: (Impl)->Parent) -> Self {
     return self.as(type, name: name)
   }
 }
+
 
 // MARK: - contains `injection`, `postInit` functions
 extension DIComponentBuilder {
@@ -169,11 +175,11 @@ extension DIComponentBuilder {
   /// - Parameter method: Injection method. First input argument is the always created object.
   /// - Returns: Self
   @discardableResult
-  public func injection(_ method: @escaping (Impl) -> Void) -> Self {
+  public func injection(_ method: @escaping (Impl) -> ()) -> Self {
     component.append(injection: MethodMaker.make1([UseObject.self], by: method), cycle: false)
     return self
   }
-
+  
   /// Function for appending an injection method.
   /// Your Can use specified name for get an object.
   ///
@@ -205,11 +211,12 @@ extension DIComponentBuilder {
   ///   - method: Injection method. First input argument is the always created object.
   /// - Returns: Self
   @discardableResult
-  public func injection<Property>(name: String? = nil, cycle: Bool = false, _ method: @escaping (Impl, Property) -> Void) -> Self {
+  public func injection<Property>(name: String? = nil, cycle: Bool = false, _ method: @escaping (Impl,Property) -> ()) -> Self {
     component.append(injection: MethodMaker.make2([UseObject.self, Property.self], [nil, name], by: method), cycle: cycle)
     return self
   }
-
+  
+  
   /// Function for appending an injection method.
   /// Your Can use specified name for get an object.
   ///
@@ -232,7 +239,7 @@ extension DIComponentBuilder {
   ///   - name: The specified name, for get an object. or nil.
   ///   - cycle: true if the injection participates in a cycle. default false.
   ///   - method: Injection method. First input argument is the always created object.
-  ///   - modificator: Need for support set many / tag on property.
+  ///   - modificator: Need for support set many / tag / arg on property.
   /// - Returns: Self
   @discardableResult
   @available(swift 4.0)
@@ -240,7 +247,7 @@ extension DIComponentBuilder {
     injection(name: name, cycle: cycle, { $0[keyPath: keyPath] = modificator($1) })
     return self
   }
-
+  
   /// Function for appending an injection method.
   /// Your Can use specified name for get an object.
   ///
@@ -270,7 +277,8 @@ extension DIComponentBuilder {
     injection(name: name, cycle: cycle, { $0[keyPath: keyPath] = $1 })
     return self
   }
-
+  
+  
   /// Function for appending an injection method which is always executed at end of a object creation.
   /// Using:
   /// ```
@@ -282,11 +290,12 @@ extension DIComponentBuilder {
   /// - Parameter method: Injection method. First input argument is the created object.
   /// - Returns: Self
   @discardableResult
-  public func postInit(_ method: @escaping (Impl) -> Void) -> Self {
+  public func postInit(_ method: @escaping (Impl) -> ()) -> Self {
     component.postInit = MethodMaker.make1([UseObject.self], by: method)
     return self
   }
 }
+
 
 // MARK: - contains `lifetime` and `default` functions
 extension DIComponentBuilder {
@@ -305,7 +314,7 @@ extension DIComponentBuilder {
     component.lifeTime = lifetime
     return self
   }
-
+  
   /// Function declaring that this component will use the default.
   /// It's necessary to resolve uncertainties if several components are available on one type.
   /// Component declared as "default" will be given in the case if there were clarifications that you need.

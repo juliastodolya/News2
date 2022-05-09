@@ -1,0 +1,79 @@
+name: News
+options:
+  bundleIdPrefix: com.News
+  deploymentTarget: '13.0'
+  groupSortPosition: top
+  generateEmptyDirectories: true
+  findCarthageFrameworks: true
+  minimumXcodeGenVersion: '2.18.0'
+
+
+schemes:
+  News:
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+    build:
+      targets:
+        News:
+        - running
+        - profiling
+        - analyzing
+        - archiving
+    profile:
+      config: Release
+    run:
+      config: Debug
+      disableMainThreadChecker: true
+      commandLineArguments:
+        "IS_NETWORK_LOGGING_ENABLED": true
+
+configs:
+  Debug: debug
+  Release: release
+
+targets:
+  News:
+    type: application
+    platform: iOS
+    deploymentTarget: 13.0
+    settings:
+      base:
+        MARKETING_VERSION: 1.0
+        
+    preBuildScripts:
+    - name: UnusedCodeDetection
+      runOnlyWhenInstalling: false
+      shell: /bin/sh
+      script: |
+           ./unused.rb xcode
+    - name: CopyPasteDetection
+      runOnlyWhenInstalling: false
+      shell: /bin/sh
+      script: |
+           pmd cpd --files ${EXECUTABLE_NAME} --minimum-tokens 50 --language swift --encoding UTF-8 --format net.sourceforge.pmd.cpd.XMLRenderer > cpd-output.xml --failOnViolation true
+           php ./cpd_script.php -cpd-xml cpd-output.xml
+    - name: ⚠️ SwiftLint
+      runOnlyWhenInstalling: false
+      shell: /bin/sh
+      script: |
+            if which swiftlint >/dev/null; then
+                swiftlint
+            else
+                echo "error: SwiftLint does not exist, install it by 'brew install swiftlint'. More: https://github.com/realm/SwiftLint"
+                exit 1
+            fi
+    - name: 🛠 R.Swift
+      runOnlyWhenInstalling: false
+      basedOnDependencyAnalysis: false
+      shell: /bin/sh
+      script: |
+            "$PODS_ROOT/R.swift/rswift" generate "$SRCROOT/News1/R.generated.swift"
+      outputFiles:
+      - $SRCROOT/News1/R.generated.swift
+
+        
+    sources:
+       - path: ../News2/News1
+       

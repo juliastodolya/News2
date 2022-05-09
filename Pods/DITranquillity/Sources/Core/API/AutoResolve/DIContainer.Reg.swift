@@ -10,6 +10,7 @@ private typealias MM = MethodMaker
 
 extension DIContainer {
 
+
   /// Declaring a new component with initial.
   /// Using:
   /// ```
@@ -19,9 +20,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make2([P0.self, P1.self], by: c))
+  public func register<Impl,P0,P1>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make2([P0.self,P1.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -32,9 +34,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make3([P0.self, P1.self, P2.self], by: c))
+  public func register<Impl,P0,P1,P2>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make3([P0.self,P1.self,P2.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -45,9 +48,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make4([P0.self, P1.self, P2.self, P3.self], by: c))
+  public func register<Impl,P0,P1,P2,P3>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make4([P0.self,P1.self,P2.self,P3.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -58,9 +62,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make5([P0.self, P1.self, P2.self, P3.self, P4.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make5([P0.self,P1.self,P2.self,P3.self,P4.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -71,9 +76,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make6([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make6([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -84,9 +90,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make7([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make7([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -97,9 +104,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make8([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make8([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -110,9 +118,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7, P8>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7, P8)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make9([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self, P8.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7,P8>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7,P8)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make9([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self,P8.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -123,9 +132,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7, P8, P9>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7, P8, P9)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make10([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self, P8.self, P9.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7,P8,P9)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make10([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self,P8.self,P9.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -136,9 +146,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make11([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self, P8.self, P9.self, P10.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make11([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self,P8.self,P9.self,P10.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -149,9 +160,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make12([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self, P8.self, P9.self, P10.self, P11.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make12([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self,P8.self,P9.self,P10.self,P11.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -162,9 +174,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make13([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self, P8.self, P9.self, P10.self, P11.self, P12.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make13([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self,P8.self,P9.self,P10.self,P11.self,P12.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -175,9 +188,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make14([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self, P8.self, P9.self, P10.self, P11.self, P12.self, P13.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make14([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self,P8.self,P9.self,P10.self,P11.self,P12.self,P13.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -188,9 +202,10 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make15([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self, P8.self, P9.self, P10.self, P11.self, P12.self, P13.self, P14.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make15([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self,P8.self,P9.self,P10.self,P11.self,P12.self,P13.self,P14.self], by: c))
   }
+  
 
   /// Declaring a new component with initial.
   /// Using:
@@ -201,8 +216,8 @@ extension DIContainer {
   /// - Parameter c: initial method. Must return type declared at registration.
   /// - Returns: component builder, to configure the component.
   @discardableResult
-  public func register<Impl, P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15>(file: String = #file, line: Int = #line, _ c: @escaping ((P0, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15)) -> Impl) -> DIComponentBuilder<Impl> {
-    return register(file, line, MM.make16([P0.self, P1.self, P2.self, P3.self, P4.self, P5.self, P6.self, P7.self, P8.self, P9.self, P10.self, P11.self, P12.self, P13.self, P14.self, P15.self], by: c))
+  public func register<Impl,P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15>(file: String = #file, line: Int = #line, _ c: @escaping ((P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15)) -> Impl) -> DIComponentBuilder<Impl> {
+    return register(file, line, MM.make16([P0.self,P1.self,P2.self,P3.self,P4.self,P5.self,P6.self,P7.self,P8.self,P9.self,P10.self,P11.self,P12.self,P13.self,P14.self,P15.self], by: c))
   }
-
+  
 }

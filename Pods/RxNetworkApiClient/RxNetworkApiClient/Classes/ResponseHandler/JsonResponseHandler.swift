@@ -6,6 +6,7 @@
 import RxSwift
 import SwiftyJSON
 
+
 /// Возвращает требуемый объект или JSON объект, если ответ успешный.
 open class JsonResponseHandler: ResponseHandler {
 

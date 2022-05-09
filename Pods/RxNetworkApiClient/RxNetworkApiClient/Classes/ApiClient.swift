@@ -8,17 +8,19 @@ import RxSwift
 import SwiftyJSON
 
 public typealias NetworkResponse = (data: Data?, urlResponse: URLResponse?, error: Error?)
-public typealias SingleObserver<T> = (SingleEvent<T>) -> Void
+public typealias SingleObserver<T> = (SingleEvent<T>) -> ()
+
 
 /// Клиент для выполнения сетевых api запросов.
 public protocol ApiClient: class {
 
     /// - Parameter request: Запрос, который нужно выполнить
     /// - Returns: Объект, который нужно вернуть при успешном завершении.
-    var interceptors: [Interceptor] { get set }
-    var responseHandlersQueue: [ResponseHandler] { get set }
+    var interceptors: [Interceptor] { set get }
+    var responseHandlersQueue: [ResponseHandler] { set get }
     func execute<T: Codable>(request: ApiRequest<T>) -> Single<T>
 }
+
 
 public protocol URLSessionProtocol {
 
@@ -26,8 +28,10 @@ public protocol URLSessionProtocol {
                   completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
 }
 
+
 extension URLSession: URLSessionProtocol {
 }
+
 
 public class ApiClientImp: ApiClient {
 
@@ -38,6 +42,7 @@ public class ApiClientImp: ApiClient {
 
     public var interceptors = [Interceptor]()
     public var responseHandlersQueue = [ResponseHandler]() // При добавлением обработчиков в список, важно учитывать порядок, в котором они будут вызываться
+
 
     public init(urlSessionConfiguration: URLSessionConfiguration,
                 completionHandlerQueue: OperationQueue) {
@@ -51,7 +56,7 @@ public class ApiClientImp: ApiClient {
     }
 
     public func execute<T>(request: ApiRequest<T>) -> Single<T> {
-        return Single.create { (observer: @escaping (SingleEvent<T>) -> Void) in
+        return Single.create { (observer: @escaping (SingleEvent<T>) -> ()) in
                     self.prepare(request)
 
                     let dataTask: URLSessionDataTask = self.urlSession

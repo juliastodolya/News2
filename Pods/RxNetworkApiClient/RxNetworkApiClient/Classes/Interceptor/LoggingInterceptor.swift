@@ -5,6 +5,7 @@
 
 import Foundation
 
+
 /// Позволяет логировать в консоль совершаемые http запросы.
 open class LoggingInterceptor: Interceptor {
 
@@ -26,6 +27,7 @@ open class LoggingInterceptor: Interceptor {
         }
         print(">>> \(urlRequest.url!.absoluteString) [\(urlRequest.httpMethod ?? "NULL")] \(parameters)\n")
     }
+
 
     public func handle<T: Codable>(request: ApiRequest<T>, response: NetworkResponse) {
         if let urlResponse = response.urlResponse {

@@ -5,10 +5,12 @@
 
 import Foundation
 
+
 /// Оболочка над http запросами.
 // https://gist.github.com/AshvinGudaliya/9a458de96c4efda4286491c4d2c0ce24
 public typealias QueryField = (String, String?)
-public typealias FormDataFields = [String: Any?]
+public typealias FormDataFields = Dictionary<String, Any?>
+
 
 open class ApiRequest<ResponseType: Codable>: NetworkRequest {
 
@@ -76,6 +78,7 @@ open class ApiRequest<ResponseType: Codable>: NetworkRequest {
     open var method: HttpMethod?
     open var body: BodyConvertible?
 
+
     public init(_ endpoint: ApiEndpoint) {
         self.endpoint = endpoint
     }
@@ -101,6 +104,7 @@ open class ApiRequest<ResponseType: Codable>: NetworkRequest {
     }
 }
 
+
 fileprivate extension Data {
 
     mutating func appendString(_ string: String) {
@@ -108,6 +112,7 @@ fileprivate extension Data {
         self.append(data!)
     }
 }
+
 
 fileprivate extension Array where Element == QueryField {
 

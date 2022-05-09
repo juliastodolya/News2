@@ -5,11 +5,13 @@
 
 import Foundation
 
+
 public struct UploadFile {
 
     public let name: String
     public let data: Data
     public let mimeType: String
+
 
     public init(_ name: String, _ data: Data, _ mimeType: String) {
         self.name = name

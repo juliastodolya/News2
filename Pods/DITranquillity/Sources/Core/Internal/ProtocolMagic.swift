@@ -9,9 +9,9 @@
 /// Weak reference
 class Weak<T> {
   private weak var _value: AnyObject?
-
+  
   var value: T? { return _value as? T }
-
+  
   init(value: T) {
     self._value = value as AnyObject
   }
@@ -32,7 +32,7 @@ extension Optional: SpecificType {
     static var isSwiftType: Bool { return true }
     static var optional: Bool { return true }
 
-    static func make(by obj: Any?) -> Wrapped? {
+    static func make(by obj: Any?) -> Optional<Wrapped> {
         return obj as? Wrapped
     }
 }
@@ -48,7 +48,7 @@ func gmake<T>(by obj: Any?) -> T {
 
   guard let typedObject = obj as? T else {
     let unwrapObj = obj.unwrapGet()
-
+    
     guard let typedUnwrapObject = unwrapObj as? T else {
       if nil == obj {
         fatalError("Can't resolve type \(T.self). For more information see logs.")
@@ -63,7 +63,7 @@ func gmake<T>(by obj: Any?) -> T {
         fatalError("Can't cast \(type(of: obj)) to \(T.self). For more information see logs.")
       }
     }
-
+    
     return typedUnwrapObject
   }
 
@@ -83,8 +83,16 @@ func unwrapType(_ type: DIAType) -> DIAType {
   while let unwrap = iter as? OptionalUnwrapper.Type {
     iter = unwrap.unwrapType
   }
-
+  
   return iter
+}
+
+func swiftType(_ type: DIAType) -> DIAType {
+    var iter = type
+    while let unwrap = iter as? SpecificType.Type {
+        iter = unwrap.type
+    }
+    return iter
 }
 
 /// For simple log
@@ -120,7 +128,7 @@ extension Sequence {
     static var type: DIAType { return Wrapped.self }
     static var isSwiftType: Bool { return true }
 
-    static func make(by obj: Any?) -> Wrapped! {
+    static func make(by obj: Any?) -> ImplicitlyUnwrappedOptional<Wrapped> {
       return obj as? Wrapped
     }
   }
@@ -156,6 +164,7 @@ func getReallyObject(_ optionalObject: Any?) -> Any? {
         return optionalObject
     #endif
 }
+
 
 extension String {
     var fileName: String {

@@ -5,6 +5,7 @@
 
 import Foundation
 
+
 public class ResponseErrorEntity: LocalizedError {
 
     public var errors = [String]()
@@ -13,6 +14,7 @@ public class ResponseErrorEntity: LocalizedError {
     public var statusCode: Int? {
         return (urlResponse as? HTTPURLResponse)?.statusCode
     }
+
 
     public init(_ urlResponse: URLResponse? = nil, _ urlRequest: URLRequest? = nil) {
         self.urlResponse = urlResponse

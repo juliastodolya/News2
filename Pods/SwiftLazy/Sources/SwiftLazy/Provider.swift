@@ -30,6 +30,7 @@ public final class Provider<Value>: BaseProvider<Value> {
   }
 }
 
+
 extension Provider {
 
   /// Maps `transform` over `value` and returns a provider result.
@@ -47,7 +48,7 @@ public prefix func *<T>(_ wrapper: Provider<T>) -> T {
   return wrapper.value
 }
 
-// MARK: Compare
+/// MARK: Compare
 
 public func == <T: Equatable, Type: Provider<T>>(lhs: Provider<T>, rhs: Provider<T>) -> Provider<Bool> {
   return Provider(lhs.value == rhs.value)
@@ -61,7 +62,7 @@ public func == <T: Equatable>(lhs: T, rhs: Provider<T>) -> Provider<Bool> {
   return Provider(lhs == rhs.value)
 }
 
-// MARK: Operations
+/// MARK: Operations
 
 public func - <T: BinaryInteger>(lhs: Provider<T>, rhs: Provider<T>) -> Provider<T> {
   return Provider(lhs.value - rhs.value)
@@ -162,3 +163,4 @@ public func ^ <T: FixedWidthInteger>(lhs: T, rhs: Provider<T>) -> Provider<T> {
 public prefix func ~ <T: FixedWidthInteger>(x: Provider<T>) -> Provider<T> {
   return Provider(~x.value)
 }
+

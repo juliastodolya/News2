@@ -5,12 +5,15 @@
 
 import Foundation
 
+
 /// Заголовки, который используются в приложении
+
 
 public struct Header {
 
     public let key: String
     public let value: String
+
 
     public init(_ key: String, _ value: String) {
         self.key = key
@@ -18,11 +21,13 @@ public struct Header {
     }
 }
 
+
 public extension Header {
 
     public static let contentJson = Header("Content-Type", "application/json; charset=utf-8")
     public static let acceptJson = Header("Accept", "application/json")
 }
+
 
 public extension Array where Element == Header {
 

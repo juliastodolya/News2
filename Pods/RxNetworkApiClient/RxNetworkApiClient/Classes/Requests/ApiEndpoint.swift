@@ -5,13 +5,15 @@
 
 import Foundation
 
+
 /// Адреса, к которым могут создаваться http запросы.
 public struct ApiEndpoint {
 
     public static var baseEndpoint: ApiEndpoint!
     public let host: String
-
-    public init(_ host: String) {
+    
+    
+    public init(_ host: String){
         self.host = host
     }
 }

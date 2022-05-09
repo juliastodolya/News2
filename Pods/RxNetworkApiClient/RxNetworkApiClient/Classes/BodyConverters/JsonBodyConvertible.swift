@@ -5,10 +5,12 @@
 
 import Foundation
 
+
 public protocol JsonBodyConvertible: BodyConvertible, Codable {
 
     var jsonEncoder: JSONEncoder { get }
 }
+
 
 public extension JsonBodyConvertible {
 

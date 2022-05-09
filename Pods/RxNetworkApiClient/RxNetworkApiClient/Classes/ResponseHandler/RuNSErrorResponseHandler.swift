@@ -5,6 +5,7 @@
 
 import Foundation
 
+
 /// Русифицирует коды ошибок, которые могут вернуться от внутренней ошибки сети.
 open class RuNSErrorResponseHandler: ResponseHandler {
 

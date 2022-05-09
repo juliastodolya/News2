@@ -5,6 +5,7 @@
 
 import Foundation
 
+
 public protocol NetworkRequest {
     var request: URLRequest { get }
 }

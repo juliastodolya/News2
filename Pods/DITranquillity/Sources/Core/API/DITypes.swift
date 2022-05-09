@@ -13,7 +13,7 @@ public typealias DIAType = Any.Type
 public typealias DITag = Any.Type
 
 /// Type of function for logging
-public typealias DILogFunc = (DILogLevel, String) -> Void
+public typealias DILogFunc = (DILogLevel, String)->()
 
 /// Short information about component. Needed for good log
 public struct DIComponentInfo: Hashable, CustomStringConvertible {
@@ -23,7 +23,7 @@ public struct DIComponentInfo: Hashable, CustomStringConvertible {
   public let file: String
   /// Line where the component is registration
   public let line: Int
-
+  
   #if swift(>=5.0)
   public func hash(into hasher: inout Hasher) {
     hasher.combine(line)
@@ -35,16 +35,16 @@ public struct DIComponentInfo: Hashable, CustomStringConvertible {
     return line ^ file.hashValue ^ ObjectIdentifier(type).hashValue
   }
   #endif
-
+  
   public static func ==(lhs: DIComponentInfo, rhs: DIComponentInfo) -> Bool {
     return lhs.type == rhs.type && lhs.line == rhs.line && lhs.file == rhs.file
   }
-
+  
   public var description: String {
     return "<Component. type: \(type); path: \(file.fileName):\(line)>"
   }
 }
-
+  
 /// Log levels. Needed for a better understanding of logs, and clipping
 public enum DILogLevel: Equatable {
   /// disable all logs

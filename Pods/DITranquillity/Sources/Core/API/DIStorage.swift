@@ -2,7 +2,7 @@
 //  DIStorage.swift
 //  DITranquillity
 //
-//  Created by Ивлев Александр on 12/02/2019.
+//  Created by Alexander Ivlev on 12/02/2019.
 //  Copyright © 2019 Alexander Ivlev. All rights reserved.
 //
 
@@ -29,26 +29,36 @@ public protocol DIStorage {
   func clean()
 }
 
-/// Contains objects in dictionary by keys
+
+/// Contains objects in dictionary by keys.
 public class DICacheStorage: DIStorage {
   public var any: [DIComponentInfo: Any] {
+    lock.lock()
+    defer { lock.unlock() }
     return cache
   }
 
   private var cache: [DIComponentInfo: Any] = [:]
+  private var lock = makeFastLock()
 
   public init() {
   }
 
   public func fetch(key: DIComponentInfo) -> Any? {
+    lock.lock()
+    defer { lock.unlock() }
     return cache[key]
   }
 
   public func save(object: Any, by key: DIComponentInfo) {
+    lock.lock()
+    defer { lock.unlock() }
     cache[key] = object
   }
 
   public func clean() {
+    lock.lock()
+    defer { lock.unlock() }
     cache.removeAll()
   }
 }
@@ -97,5 +107,27 @@ public class DICompositeStorage: DIStorage {
   /// Remove all save objects from all storages
   public func clean() {
     storages.forEach { $0.clean() }
+  }
+}
+
+
+/// Contains objects in dictionary by keys
+class DIUnsafeCacheStorage: DIStorage {
+  var any: [DIComponentInfo: Any] {
+    return cache
+  }
+
+  private var cache: [DIComponentInfo: Any] = [:]
+
+  func fetch(key: DIComponentInfo) -> Any? {
+    return cache[key]
+  }
+
+  func save(object: Any, by key: DIComponentInfo) {
+    cache[key] = object
+  }
+
+  func clean() {
+    cache.removeAll()
   }
 }

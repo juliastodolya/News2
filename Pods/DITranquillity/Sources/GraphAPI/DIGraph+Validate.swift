@@ -2,7 +2,7 @@
 //  DIGraph+Validate.swift
 //  DITranquillity
 //
-//  Created by Ивлев А.Е. on 02.07.2020.
+//  Created by Alexander Ivlev on 02.07.2020.
 //  Copyright © 2020 Alexander Ivlev. All rights reserved.
 //
 
@@ -183,6 +183,7 @@ extension DIGraph {
 
     return isValidVerticesCycles && isValidEdgesCycles
   }
+
 
   private func checkGraphCyclesVertices(cycles: [DICycle]) -> Bool {
     var successful: Bool = true

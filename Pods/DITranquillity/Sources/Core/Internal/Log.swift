@@ -12,17 +12,17 @@ enum LogBrace {
   case begin, neutral, end
 }
 
-internal func log(_ level: DILogLevel, msg: @autoclosure () -> String, brace: LogBrace = .neutral) {
+internal func log(_ level: DILogLevel, msg: @autoclosure ()->String, brace: LogBrace = .neutral) {
   log(level, msgc: msg, brace: brace)
 }
 
 private let tabulationKey: String = "di_tranquillity_tabulation"
 
-internal func log(_ level: DILogLevel, msgc: () -> String, brace: LogBrace = .neutral) {
+internal func log(_ level: DILogLevel, msgc: ()->String, brace: LogBrace = .neutral) {
   guard let logFunc = DISetting.Log.fun else {
     return
   }
-
+  
   if level.priority < DISetting.Log.level.priority {
     return
   }
@@ -56,7 +56,7 @@ extension DILogLevel {
       return 30
     case .none:
       return 40
-
+    
     }
   }
 }

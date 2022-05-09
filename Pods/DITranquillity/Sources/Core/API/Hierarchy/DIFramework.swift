@@ -9,7 +9,7 @@
 /// Slight expansion over part.
 /// Allows you to express more expressively the entry point to the framework of you application.
 /// It isn't necessary to create several such classses on one framework - it willn't be convenient.
-public protocol DIFramework: class {
+public protocol DIFramework: AnyObject {
   /// Method inside of which you can registration a components.
   /// It's worth combining the components for some reason.
   /// And call a class implementing the protocol according to this characteristics.
@@ -34,13 +34,14 @@ extension DIContainer {
     if includedParts.checkAndInsert(ObjectIdentifier(framework)) {
       frameworkStack.push(framework)
       defer { frameworkStack.pop() }
-
+      
       framework.load(container: self)
     }
 
     return self
   }
 }
+
 
 extension DIContainer {
   /// Allows you to specify dependencies between frameworks.

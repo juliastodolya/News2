@@ -2,7 +2,7 @@
 //  DIGraph+ValidationErrors.swift
 //  DITranquillity
 //
-//  Created by Ивлев А.Е. on 03.07.2020.
+//  Created by Alexander Ivlev on 03.07.2020.
 //  Copyright © 2020 Alexander Ivlev. All rights reserved.
 //
 
@@ -83,7 +83,7 @@ extension DIGraph {
   }
 }
 
-private func makeCycleDescription(vertices: [DIVertex], edges: [DIEdge]) -> String {
+fileprivate func makeCycleDescription(vertices: [DIVertex], edges: [DIEdge]) -> String {
   var vertexDescriptions = vertices.map { $0.description }
   guard let firstDescription = vertexDescriptions.first else {
     return ""

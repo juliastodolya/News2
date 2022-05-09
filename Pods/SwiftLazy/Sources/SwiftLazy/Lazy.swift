@@ -36,6 +36,7 @@ public final class Lazy<Value>: BaseThreadSaveLazy<Value> {
   public override func clear() { super.clear() }
 }
 
+
 extension Lazy {
 
   /// Maps `transform` over `value` and returns a lazy result.
@@ -53,7 +54,7 @@ public prefix func *<T>(_ wrapper: Lazy<T>) -> T {
   return wrapper.value
 }
 
-// MARK: Compare
+/// MARK: Compare
 
 public func == <T: Equatable, Type: Lazy<T>>(lhs: Lazy<T>, rhs: Lazy<T>) -> Lazy<Bool> {
   return Lazy(lhs.value == rhs.value)
@@ -67,7 +68,7 @@ public func == <T: Equatable>(lhs: T, rhs: Lazy<T>) -> Lazy<Bool> {
   return Lazy(lhs == rhs.value)
 }
 
-// MARK: Operations
+/// MARK: Operations
 
 public func - <T: BinaryInteger>(lhs: Lazy<T>, rhs: Lazy<T>) -> Lazy<T> {
   return Lazy(lhs.value - rhs.value)
